@@ -1,8 +1,6 @@
 const titleInput = document.getElementById("titleInput");
 const yearInput = document.getElementById("yearInput");
 const addBtn = document.getElementById("addBtn");
-const deleteBtn = document.getElementById("deleteBtn");
-const editBtn = document.getElementById("editBtn");
 const movieList = document.getElementById("movieList");
 let movies = [];
 let nextId = 1;
@@ -65,15 +63,19 @@ renderMovies();
 // Solo funciona añadir al inicio
 addBtn.addEventListener("click", addMovie);
 // Estos eventos se completarán en ramas
-deleteBtn.addEventListener("click", () => alert("Se implementa en rama eliminar"));
-editBtn.addEventListener("click", () => alert("Se implementa en rama editar"));
 renderMovies();
 movieList.addEventListener("click", (e) => {
-if (btn.dataset.action === "delete") {
-    deleteMovieById(id);
-}
+    const btn = e.target;
+    if (!btn.dataset.action) return;
 
-if (btn.dataset.action === "edit") {
-    editMovieById(id);
-}
+    const li = btn.closest("li");
+    const id = Number(li.dataset.id);
+
+    if (btn.dataset.action === "delete") {
+        deleteMovieById(id);
+    }
+
+    if (btn.dataset.action === "edit") {
+        editMovieById(id);
+    }
 });
