@@ -29,3 +29,5 @@ pointer; color: white; background: #555; }
 #deleteBtn { 
     background: #1f6feb;  /* azul */
 }
+.btn { font-weight: 700; border-radius: 14px; }
+.small { font-weight: 700; }
